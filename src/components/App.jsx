@@ -12,6 +12,7 @@ import Navigation from './Navigation/Navigation';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage/HomePage';
 import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
       <main>
         <HomePage />
         <RegistrationPage />
+        <LoginPage />
         {/* <Suspense fallback={<h3>Loading data...</h3>}>
           <Routes>
             <Route path="/" element={HomePage} />
