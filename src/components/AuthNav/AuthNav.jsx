@@ -9,8 +9,12 @@ const buildLinkClass = ({ isActive }) => {
 const AuthNav = () => {
   return (
     <div className="subNav">
-      <NavLink className={buildLinkClass}>Register</NavLink>
-      <NavLink className={buildLinkClass}>Log In</NavLink>
+      <NavLink to="/register" className={buildLinkClass}>
+        Register
+      </NavLink>
+      <NavLink to="/login" className={buildLinkClass}>
+        Log In
+      </NavLink>
     </div>
   );
 };
