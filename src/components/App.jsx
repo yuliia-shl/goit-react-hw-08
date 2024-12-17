@@ -6,8 +6,12 @@ import ContactList from './ContactList/ContactList';
 import ContactForm from './ContactForm/ContactForm';
 import SearchBox from './SearchBox/SearchBox';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { fetchContacts } from '../redux/contacts/operations';
+import Navigation from './Navigation/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from '../pages/HomePage/HomePage';
+import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -19,12 +23,23 @@ function App() {
 
   return (
     <>
-      <div className="mainWrap">
-        <h1>Phonebook</h1>
-        <ContactForm />
-        <SearchBox />
-        <ContactList />
-      </div>
+      <header>
+        <Navigation />
+        <div className="mainWrap">
+          <ContactForm />
+          <SearchBox />
+          <ContactList />
+        </div>
+      </header>
+      <main>
+        <HomePage />
+        <RegistrationPage />
+        {/* <Suspense fallback={<h3>Loading data...</h3>}>
+          <Routes>
+            <Route path="/" element={HomePage} />
+          </Routes>
+        </Suspense> */}
+      </main>
     </>
   );
 }

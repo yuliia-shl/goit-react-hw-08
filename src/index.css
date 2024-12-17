@@ -25,3 +25,12 @@ img {
   display: block;
   max-width: 100%;
 }
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
