@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import s from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
+import UserMenu from '../UserMenu/UserMenu';
 
 const buildLinkClass = ({ isActive }) => {
   return clsx('link', isActive && 'active');
@@ -18,6 +19,7 @@ const Navigation = () => {
         <div className={s.subNav}>
           <NavLink className={buildLinkClass}>Register</NavLink>
           <NavLink className={buildLinkClass}>Log In</NavLink>
+          {/* <UserMenu /> */}
         </div>
       </nav>
     </>

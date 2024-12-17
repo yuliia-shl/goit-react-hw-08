@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   border-bottom: 2px solid grey;
   margin-bottom: 10px;
@@ -19,7 +19,6 @@
 
 .active {
   color: #110d39;
-  /* font-weight: bold; */
   text-decoration: underline;
 }
 
