@@ -1,13 +1,7 @@
 import 'modern-normalize';
 import '../index.css';
-import './App.css';
 
-// import ContactList from './ContactList/ContactList';
-// import ContactForm from './ContactForm/ContactForm';
-// import SearchBox from './SearchBox/SearchBox';
-// import { useDispatch } from 'react-redux';
-// import { Suspense, useEffect } from 'react';
-// import { fetchContacts } from '../redux/contacts/operations';
+// import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../pages/HomePage/HomePage';
 // import RegistrationPage from '../pages/RegistrationPage/RegistrationPage';
@@ -34,27 +28,3 @@ function App() {
 }
 
 export default App;
-
-// function App() {
-//   const dispatch = useDispatch();
-
-//   // Викликаємо операцію запиту для отримання контактів
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-
-//   return (
-//     <>
-//       <header>
-//         <AppBar />
-//       </header>
-//       <main>
-//       <div className="mainWrap">
-//           <ContactForm />
-//           <SearchBox />
-//           <ContactList />
-//         </div>
-//       </main>
-//     </>
-//   );
-// }

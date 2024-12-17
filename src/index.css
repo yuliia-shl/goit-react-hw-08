@@ -36,12 +36,6 @@ button {
   border-radius: 4px;
 }
 
-/* .mainWrap {
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-} */
-
 .nav {
   display: flex;
   justify-content: space-between;
