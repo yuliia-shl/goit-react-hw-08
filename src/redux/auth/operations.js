@@ -41,3 +41,20 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(e.message);
   }
 });
+
+export const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+  const savedToken = thunkAPI.getState().auth.token;
+
+  if (!savedToken) {
+    return thunkAPI.rejectWithValue('You are not logged in!');
+  }
+
+  try {
+    setAuthHeader(savedToken);
+    const { data } = await goitApi.get('/users/current');
+
+    return data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
