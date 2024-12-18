@@ -2,16 +2,26 @@ import { useDispatch } from 'react-redux';
 import s from './RegistrationForm.module.css';
 import { Field, Form, Formik } from 'formik';
 import { register } from '../../redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialValues = {
     name: '',
     email: '',
     password: '',
   };
+
   const handleSubmit = (values, options) => {
-    dispatch(register(values));
+    dispatch(register(values))
+      .unwrap()
+      .then(() => {
+        navigate('/contacts');
+      })
+      .catch(() => {
+        alert('This email is already registered.');
+      });
     options.resetForm();
   };
 

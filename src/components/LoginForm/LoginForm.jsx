@@ -1,12 +1,28 @@
+import { useDispatch } from 'react-redux';
 import s from './LoginForm.module.css';
 import { Field, Form, Formik } from 'formik';
+import { login } from '../../redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialValues = {
     email: '',
     password: '',
   };
-  const handleSubmit = value => {};
+
+  const handleSubmit = (values, options) => {
+    dispatch(login(values))
+      .unwrap()
+      .then(() => {
+        navigate('/contacts');
+      })
+      .catch(() => {
+        alert('Wrong email or password.');
+      });
+    options.resetForm();
+  };
 
   return (
     <>
