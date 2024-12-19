@@ -23,14 +23,21 @@ const slice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        // console.log(action.payload.user);
+
         state.token = action.payload.token;
+        // console.log(action.payload.token);
         state.isLoggedIn = true;
+        // console.log(state.isLoggedIn);
       })
-      .addCase(logout.fulfilled, () => initialState)
+      .addCase(logout.fulfilled, () => {
+        return initialState;
+      })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        // console.log(`refresh ${state.isLoggedIn}`);
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
