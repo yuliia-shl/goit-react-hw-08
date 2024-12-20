@@ -13,6 +13,7 @@ import { selectIsRefreshing } from '../redux/auth/selectors';
 import { refreshUser } from '../redux/auth/operations';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,8 +37,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/register"
+            element={<RestrictedRoute component={<RegistrationPage />} redirectTo="/contacts" />}
+          />
+          <Route
+            path="/login"
+            element={<RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />}
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
