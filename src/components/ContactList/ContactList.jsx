@@ -16,6 +16,7 @@ const ContactList = () => {
 
   return (
     <div>
+      {/* TODO - Change for Loader */}
       {loading && <b>Loading contacts...</b>}
       {error && <b>{error}</b>}
       {contacts.length > 0 && !loading ? (

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { login, logout, refreshUser, register } from './operations';
 
 const initialState = {
@@ -16,20 +16,6 @@ const slice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        // console.log(action.payload.user);
-
-        state.token = action.payload.token;
-        // console.log(action.payload.token);
-        state.isLoggedIn = true;
-        // console.log(state.isLoggedIn);
-      })
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
@@ -37,13 +23,20 @@ const slice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
-        // console.log(`refresh ${state.isLoggedIn}`);
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
+      })
+      .addMatcher(isAnyOf(register.fulfilled, login.fulfilled), (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
+      .addMatcher(isAnyOf(register.rejected, login.rejected, logout.rejected), state => {
+        state.isLoggedIn = false;
       });
   },
 });

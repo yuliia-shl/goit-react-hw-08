@@ -14,6 +14,7 @@ const ContactForm = () => {
   const handleSubmit = (values, options) => {
     const { name, number } = values;
     if (!name.trim() || !number.trim()) {
+      // TODO change for toaster
       alert('Required!');
       return;
     }

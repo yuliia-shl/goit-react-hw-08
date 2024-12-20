@@ -20,6 +20,7 @@ const RegistrationForm = () => {
         navigate('/contacts');
       })
       .catch(() => {
+        // TODO - Change for toaster
         alert('This email is already registered.');
       });
     options.resetForm();

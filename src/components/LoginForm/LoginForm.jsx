@@ -19,6 +19,7 @@ const LoginForm = () => {
         navigate('/contacts');
       })
       .catch(() => {
+        // TODO Change for toaster message
         alert('Wrong email or password.');
       });
     options.resetForm();

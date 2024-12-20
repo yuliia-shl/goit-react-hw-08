@@ -25,6 +25,7 @@ function App() {
 
   return isRefreshing ? null : (
     <>
+      {/* TODO - Add lazy imports */}
       {/* <Suspense fallback={<h3>Loading data...</h3>}> */}
       <Routes>
         <Route path="/" element={<Layout />}>
