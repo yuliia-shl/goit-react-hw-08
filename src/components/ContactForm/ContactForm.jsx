@@ -3,6 +3,7 @@ import s from './ContactForm.module.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -14,8 +15,7 @@ const ContactForm = () => {
   const handleSubmit = (values, options) => {
     const { name, number } = values;
     if (!name.trim() || !number.trim()) {
-      // TODO change for toaster
-      alert('Required!');
+      toast.error('Please fill name and number to add new contact');
       return;
     }
     const newContactData = {

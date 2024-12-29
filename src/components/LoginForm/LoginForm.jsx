@@ -3,6 +3,7 @@ import s from './LoginForm.module.css';
 import { Field, Form, Formik } from 'formik';
 import { login } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -19,14 +20,14 @@ const LoginForm = () => {
         navigate('/contacts');
       })
       .catch(() => {
-        // TODO Change for toaster message
-        alert('Wrong email or password.');
+        toast.error('Wrong email or password. Try again');
       });
     options.resetForm();
   };
 
   return (
     <>
+      {/* TODO Додати валідацію форми  */}
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         <Form className={s.form}>
           <label className={s.label}>

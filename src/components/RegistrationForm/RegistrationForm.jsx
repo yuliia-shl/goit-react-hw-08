@@ -1,8 +1,9 @@
-import { useDispatch } from 'react-redux';
 import s from './RegistrationForm.module.css';
+import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
 import { register } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -20,14 +21,26 @@ const RegistrationForm = () => {
         navigate('/contacts');
       })
       .catch(() => {
-        // TODO - Change for toaster
-        alert('This email is already registered.');
+        toast(t => (
+          <div className={s.errorWrap}>
+            <span className={s.error}>
+              This email is already registered, try to{' '}
+              <a href="/login" className={s.errorLink}>
+                Log in
+              </a>
+            </span>
+            <button onClick={() => toast.dismiss(t.id)} className={s.errorBtn}>
+              Dismiss
+            </button>
+          </div>
+        ));
       });
     options.resetForm();
   };
 
   return (
     <>
+      {/* TODO Додати валідацію форми  */}
       <Formik onSubmit={handleSubmit} initialValues={initialValues}>
         <Form className={s.form}>
           <label className={s.label}>

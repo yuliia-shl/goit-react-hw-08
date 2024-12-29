@@ -21,7 +21,19 @@
   border-radius: 4px;
 }
 
-/* .error {
+.errorWrap {
+  display: flex;
+}
+
+.error {
+  font-size: 18px;
+}
+
+.errorLink {
   color: red;
-  font-size: 12px;
-} */
+  font-weight: bold;
+}
+
+.errorBtn {
+  padding: 0 12px;
+}
