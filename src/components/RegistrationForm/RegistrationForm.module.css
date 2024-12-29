@@ -37,3 +37,7 @@
 .errorBtn {
   padding: 0 12px;
 }
+
+.errorMessage {
+  color: red;
+}

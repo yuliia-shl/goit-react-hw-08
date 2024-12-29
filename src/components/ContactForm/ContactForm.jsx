@@ -27,6 +27,7 @@ const ContactForm = () => {
   };
 
   // Валідація
+  // TODO Прописати стилі для валідації
   const contactSchema = Yup.object().shape({
     name: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('Required'),
     number: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('Required'),
